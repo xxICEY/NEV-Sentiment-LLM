@@ -1,23 +1,38 @@
 import re
 
-class TextCleaner:
+class HybridCleaner:
     """
-    基于 LLM + 正则表达式的文本清洗器
+    [Research Component: LLM-Driven Preprocessing]
+    
+    This module implements the "LLM + Regex" cleaning methodology proposed in the research design.
+    
+    The logic flow is:
+    1. Sampling: Extract small batches of raw UGC data.
+    2. Pattern Recognition: Use LLM (GPT-4/DeepSeek) to identify noise patterns (ads, spam, non-car content).
+    3. Rule Generation: LLM generates Python Regex patterns based on identified noise.
+    4. Batch Cleaning: Apply generated Regex to the full dataset for efficiency.
     """
-    def __init__(self, llm_api_key):
-        self.api_key = llm_api_key
 
-    def generate_regex_by_llm(self, sample_texts):
+    def __init__(self, llm_client):
+        self.client = llm_client
+        self.regex_patterns = []
+
+    def discover_noise_patterns(self, sample_data):
         """
-        [创新点] 
-        输入：少量脏数据样本
-        输出：LLM 自动生成的正则表达式列表
+        Uses LLM to analyze sample text and return descriptions of noise.
         """
-        # TODO: 这里将接入 LLM API，让大模型分析文本特征并返回 Regex
+        # TODO: Implement LLM API call
         pass
 
-    def clean(self, text):
+    def generate_regex(self, noise_description):
         """
-        执行清洗
+        Translates noise descriptions into executable Python Regex.
         """
-        return text.strip()
+        # TODO: Implement Regex generation logic
+        pass
+    
+    def execute_cleaning(self, full_dataset):
+        """
+        Applies the hybrid cleaning strategy.
+        """
+        pass
