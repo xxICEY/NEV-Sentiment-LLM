@@ -62,7 +62,31 @@ This repository currently serves as a **Research Proposal** and **System Design*
 *   Core algorithms (LDA + LLM interaction logic) are defined in the `src/` directory.
 *   Large-scale quantitative evaluation is planned for the next phase.
 
-## 7. Directory Structure
+## 7. Project Roadmap
+
+The project is currently in the **active prototyping phase**.
+( Legend: ✅ Completed | 🔄 In Progress | ⏳ Planned )
+
+### Phase 1: Research Design & Infrastructure
+- [x] ✅ **Literature Review**: Methodological validation based on "Jobless Growth" (LLM+Regex) & specialized NEV studies.
+- [x] ✅ **System Architecture**: Designing the hybrid pipeline of "LDA Structure + LLM Semantics".
+- [x] ✅ **Environment Setup**: Repository initialization and dependency management (`requirements.txt`).
+
+### Phase 2: Data & Preprocessing (The Hybrid Engine)
+- [ ] 🔄 **Data Acquisition**: Developing multi-threaded scrapers for Autohome/Dongchedi.
+- [ ] 🔄 **LLM-Based Noise Modeling**: Designing prompt engineering for noise pattern discovery.
+- [ ] ⏳ **Regex Generation Pipeline**: Implementing the automated Regex construction module.
+
+### Phase 3: Modeling & Interpretation
+- [ ] ⏳ **LDA Model Training**: Optimization of *K* topics via Coherence Score.
+- [ ] ⏳ **Semantic Injection**: Integration of GPT-4/DeepSeek API for topic labeling.
+- [ ] ⏳ **Experimentation**: Comparative analysis between BEV and PHEV datasets.
+
+### Phase 4: Visualization & Reporting
+- [ ] ⏳ **Result Visualization**: Interactive pyLDAvis charts and Radar plots.
+- [ ] ⏳ **Final Report**: Drafting the methodological paper.
+
+## 8. Directory Structure
 ```text
 NEV-Opinion-Mining/
 ├── data/                # Raw and processed datasets
