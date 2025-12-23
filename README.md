@@ -1,66 +1,76 @@
-# 🚗 NEV-Opinion-Mining: A Hybrid Analysis Framework Based on LDA & LLMs
+# 🚗 NEV-Opinion-Mining
+### A Hybrid Topic–Semantic Framework Based on LDA and Large Language Models
 
-![Status](https://img.shields.io/badge/Status-Work_in_Progress-yellow)
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
-![Method](https://img.shields.io/badge/Method-LDA%2BLLM-green)
+![Status](https://img.shields.io/badge/Status-Research_Design-blue)
+![Methodology](https://img.shields.io/badge/Methodology-LDA%2BLLM-green)
+![Domain](https://img.shields.io/badge/Domain-Decision_Science-orange)
 ![License](https://img.shields.io/badge/License-MIT-grey)
 
-## 📖 Introduction
-**NEV-Opinion-Mining** is a novel text mining framework designed to analyze user sentiment in the Chinese **New Energy Vehicle (NEV)** market. 
+## 1. Motivation
+Understanding user sentiment in the New Energy Vehicle (NEV) market presents unique challenges. User-generated reviews are highly unstructured, noisy, and rich in domain-specific expressions.
 
-By integrating **Latent Dirichlet Allocation (LDA)** with **Large Language Models (LLMs)**, this project addresses the limitations of traditional topic modeling—specifically, the lack of semantic interpretability and the difficulty in handling unstructured UGC (User Generated Content) noise.
+While Large Language Models (LLMs) excel at semantic understanding, fully replacing statistical models with LLM-based classification often sacrifices **comparability, transparency, and structural interpretability**.
 
-The core objective is to conduct a comparative analysis between **Battery Electric Vehicles (BEV)** and **Plug-in Hybrid Electric Vehicles (PHEV)**, revealing structural differences in user concerns regarding "Intelligence," "Range," and "Service."
+**The Research Question:**
+> *Can LLMs be used not as black-box classifiers, but as semantic operators that enhance traditional topic models while preserving their statistical structure?*
 
-## 💡 Core Innovations
+## 2. Research Objective
+The core objective is to design a hybrid opinion mining framework that enables:
+1.  **Structurally interpretable** topic modeling.
+2.  **Fine-grained semantic interpretation** of latent topics.
+3.  **Comparative analysis** between **BEV** (Battery Electric Vehicle) and **PHEV** (Plug-in Hybrid Electric Vehicle) user groups.
 
-### 1. LLM-Driven Data Preprocessing 🛠️
-Inspired by the methodology in recent economic literature, we utilize **LLMs (e.g., GPT-5/Gemini 3Pro)** to automatically generate high-precision **Regular Expressions**. This allows for efficient, low-cost cleaning of massive, noisy datasets, far surpassing traditional keyword matching methods.
+Rather than predicting sentiment alone, the framework aims to uncover structural differences in user concerns (e.g., Intelligence experience vs. Range anxiety) to support data-driven business decisions.
 
-### 2. Enhanced Topic Interpretability 🧠
-Traditional LDA models often output ambiguous keyword lists. We employ LLMs as a **Semantic Interpreter** to automatically generate coherent, context-aware labels for each topic cluster derived from LDA, bridging the gap between statistical probability and human understanding.
+## 3. Methodological Positioning
+This framework positions itself between **Classical Unsupervised Learning** (LDA) and **Generative AI** (LLMs).
 
-### 3. Fine-Grained Comparative Analysis 📊
-Unlike generic sentiment analysis, this framework distinguishes between **BEV** and **PHEV** user groups, providing granular insights into how different powertrain technologies influence user satisfaction and pain points.
+| Approach | Pros | Cons |
+| :--- | :--- | :--- |
+| **Pure LDA** | Probabilistic structure, Stable | Low semantic interpretability, Sensitive to noise |
+| **Pure LLM** | High semantic understanding | High cost, Black-box nature, Hard to quantify structurally |
+| **Our Hybrid Framework** | **Interpretable + Semantic-aware** | Complex pipeline design |
 
-## 🏗️ Architecture
+**Design Philosophy:**
+*   **LDA** provides the probabilistic backbone for topic stability.
+*   **LLMs** act as "Semantic Operators" for noise filtering and meaning extraction.
 
-The project follows a "Human-in-the-loop" hybrid pipeline:
+## 4. Core Innovations
 
-1.  **Data Acquisition**: Scraping multi-source reviews (Autohome/Dongchedi).
-2.  **Preprocessing (The Hybrid Engine)**: 
-    *   LLM identifies noise patterns -> Generates Regex -> Batch Cleaning.
-    *   LLM constructs domain-specific stop-word lists.
-3.  **Topic Modeling**: Gensim-based LDA training with Coherence Score optimization.
-4.  **Semantic Enrichment**: LLM agents interpret topics and assign sentiment scores.
-5.  **Visualization**: Interactive charts (pyLDAvis) and comparative radar plots.
+### 4.1 LLM-Driven Noise Modeling
+Inspired by recent computational social science literature (e.g., *"Jobless Growth"*), we leverage LLMs to identify recurrent noise patterns in raw UGC and automatically generate high-precision **Regular Expressions**. This "Human-in-the-loop" approach enables scalable cleaning that surpasses manual keyword matching.
 
-## 🗓️ Roadmap
+### 4.2 LLM-Assisted Semantic Interpretation
+Traditional LDA outputs unordered keyword lists. In this framework, LLMs serve as interpreters to bridge probabilistic outputs with human understanding, automatically generating coherent topic labels.
 
-- [ ] **Phase 1: Infrastructure & Data**
-    - [ ] Initialize repository structure.
-    - [ ] Develop multi-threaded scrapers (Selenium).
-    - [ ] Collect 10k+ raw review samples.
-- [ ] **Phase 2: LLM-Enhanced Preprocessing**
-    - [ ] Implement the "LLM-to-Regex" cleaning logic.
-    - [ ] Build a specialized NEV domain dictionary.
-- [ ] **Phase 3: Modeling & Interpretation**
-    - [ ] Train LDA models and determine optimal *K* topics.
-    - [ ] Integrate LLM API for automated topic labeling.
-- [ ] **Phase 4: Analysis & Reporting**
-    - [ ] Calculate fine-grained sentiment scores.
-    - [ ] Generate BEV vs. PHEV comparative reports.
+### 4.3 Comparative Topic–Sentiment Analysis
+Unlike generic sentiment analysis, this framework explicitly designs for **Group-Level Comparison** (BEV vs. PHEV), identifying asymmetric pain points across different powertrain technologies.
 
-## 📂 Directory Structure
+## 5. System Architecture
+The project follows a hybrid pipeline:
+1.  **Data Acquisition**: Multi-source scraping from Chinese automobile platforms.
+2.  **LLM-Enhanced Preprocessing**: Noise pattern discovery & Regex generation.
+3.  **Topic Modeling**: Gensim-based LDA with Coherence optimization.
+4.  **Semantic Enrichment**: LLM-based topic labeling & sentiment interpretation.
+5.  **Comparative Analysis**: BEV vs. PHEV topic distribution visualization.
 
+## 6. Research Stage Clarification ⚠️
+**Current Status: Methodological Design & Prototyping**
+
+This repository currently serves as a **Research Proposal** and **System Design** demonstration. 
+*   The pipeline architecture is fully specified.
+*   Core algorithms (LDA + LLM interaction logic) are defined in the `src/` directory.
+*   Large-scale quantitative evaluation is planned for the next phase.
+
+## 7. Directory Structure
 ```text
 NEV-Opinion-Mining/
-├── data/                  # Raw and processed datasets
+├── data/                # Raw and processed datasets
 ├── src/
-│   ├── scraper.py         # Data collection scripts
-│   ├── preprocessor.py    # LLM+Regex cleaning logic
-│   ├── lda_model.py       # Topic modeling core
-│   └── llm_agent.py       # API interface for LLM interpretation
-├── notebooks/             # Jupyter notebooks for experiments
-├── requirements.txt       # Python dependencies
-└── README.md              # Project documentation
+│   ├── scraper.py       # Data collection scripts
+│   ├── preprocessor.py  # LLM + Regex cleaning logic (Core Innovation)
+│   ├── lda_model.py     # Topic modeling core
+│   └── llm_agent.py     # LLM interface for semantic interpretation
+├── notebooks/           # Experimental designs
+├── requirements.txt     # Dependencies
+└── README.md            # Project documentation
